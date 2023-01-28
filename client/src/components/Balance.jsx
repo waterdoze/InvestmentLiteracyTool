@@ -2,9 +2,8 @@ import React from "react";
 
 function Balance(props) {
   return (
-    <div className="balance">
-      <h3>Balance</h3>
-      <p>${props.balance}</p>
+    <div className="balance-component">
+      <h3 className="balance">Balance: $ {props.balance}</h3>
     </div>
   );
 }

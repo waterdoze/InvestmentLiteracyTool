@@ -5,17 +5,25 @@ import StockInfo from "./components/StockInfo";
 import Balance from "./components/Balance";
 import Resources from "./components/Resources";
 import Transaction from "./components/Transaction";
-
 import {Data} from './utils/Data';
 import Graph from './components/Graph';
+
 function App() {
 	return (
-		<div className="App">
+		<div id="App">
 			<div id="SidePane">
 				<Title />
+				<hr />
+				<StockInfo />
+				<Balance />
+				<hr />
+				<Resources />
 			</div>
 			<div id="StockPane">
-        <Graph data={Data} />
+				<div id="GraphWrapper">
+        			<Graph data={Data} />
+				</div>
+				<Transaction />
 			</div>
 		</div>
 	);
