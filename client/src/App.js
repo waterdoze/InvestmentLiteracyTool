@@ -5,6 +5,7 @@ import StockInfo from "./components/StockInfo";
 import Balance from "./components/Balance";
 import Resources from "./components/Resources";
 import Transaction from "./components/Transaction";
+
 import {Data} from './utils/Data';
 import Graph from './components/Graph';
 
