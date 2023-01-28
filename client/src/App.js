@@ -13,7 +13,7 @@ function App() {
   const [data, setData] = useState([]);
   const [currData, setCurrData] = useState([]);
   const [stockIndex, setStockIndex] = useState(10);
-  //let currentStock = data[data.length - 1].Price;
+  const [currStock, setCurrStock] = useState();
 
 
   const [time, setTime] = useState(10);
@@ -27,6 +27,7 @@ function App() {
       )).reverse();
       setData(pd);
       setCurrData(pd.slice(0,10));
+      setCurrStock(pd[currData.length - 1]);
       console.log(currData)
       }
     fetchData();
@@ -46,8 +47,8 @@ function App() {
       const newData = [...currData];
       newData.push(data[stockIndex]);
       setStockIndex(stockIndex + 1);
-      console.log(stockIndex)
       setCurrData(newData);
+      setCurrStock(newData[newData.length - 1]);
       
     }
   }, [time]);
