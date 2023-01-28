@@ -14,6 +14,9 @@ app.use(express.json())
 mongoose.set('strictQuery', false)
 mongoose.connect(uri)
 
+app.get('/perDay', async (req, res) => {
+})
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
 })
