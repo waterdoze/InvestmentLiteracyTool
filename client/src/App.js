@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './index.css'
 import Title from "./components/Title";
 import StockInfo from "./components/StockInfo";
@@ -9,13 +9,56 @@ import Transaction from "./components/Transaction";
 import {Data} from './utils/Data';
 import Graph from './components/Graph';
 function App() {
+
+  const [data, setData] = useState([]);
+  const [currData, setCurrData] = useState([]);
+  const [stockIndex, setStockIndex] = useState(10);
+  //let currentStock = data[data.length - 1].Price;
+
+
+  const [time, setTime] = useState(10);
+  useEffect(()  => {
+    const fetchData = async () => {
+      const response = await fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=META&apikey=TX6O5JWMEMBV5M0M%27');
+      const json = await response.json();
+
+      const pd = Object.keys(json["Time Series (Daily)"]).map((key) => (
+        {Date: key, Price: parseFloat(json["Time Series (Daily)"][key]["1. open"])}
+      )).reverse();
+      setData(pd);
+      setCurrData(pd.slice(0,10));
+      console.log(currData)
+      }
+    fetchData();
+    }, []);
+  /*add new stock to graph*/
+  useEffect(() => {
+    let interval = setInterval(() => {
+      setTime(time => time - 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  
+  useEffect(() => {
+    if (time === 0) {
+      setTime(10);
+      const newData = [...currData];
+      newData.push(data[stockIndex]);
+      setStockIndex(stockIndex + 1);
+      console.log(stockIndex)
+      setCurrData(newData);
+      
+    }
+  }, [time]);
+
 	return (
 		<div className="App">
 			<div id="SidePane">
 				<Title />
 			</div>
 			<div id="StockPane">
-        <Graph data={Data} />
+        <Graph data={currData} />
 			</div>
 		</div>
 	);

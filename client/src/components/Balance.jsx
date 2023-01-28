@@ -1,10 +1,10 @@
 import React from "react";
 
-function Balance(props) {
+function Balance({balance}) {
   return (
     <div className="balance">
       <h3>Balance</h3>
-      <p>${props.balance}</p>
+      <p>${balance}</p>
     </div>
   );
 }
