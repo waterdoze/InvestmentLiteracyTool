@@ -15,13 +15,13 @@ function Graph({ data }) {
         <ResponsiveContainer width="100%" aspect={3}>
         <LineChart data={data} margin={{ right: 100, left: 100 }} >
             <CartesianGrid />
-            <XAxis dataKey="name"
+            <XAxis dataKey="Date"
             interval={'preserveStartEnd'} 
             label = {<AxisLabel axisType='yAxis' x={0} y={0} width={0} height={0}> Price</AxisLabel>}/> {/* change x and y*/}
-            <YAxis dataKey={"student"} label = {<AxisLabel axisType='xAxis' x={0} y={0} width={0} height={0}>Date</AxisLabel>}/> {/* change x and y*/}
+            <YAxis dataKey={"Price"} label = {<AxisLabel axisType='xAxis' x={0} y={0} width={0} height={0}>Date</AxisLabel>}/> {/* change x and y*/}
             <Legend />
             <Tooltip />
-            <Line dataKey="student"
+            <Line dataKey="Price"
             stroke="black" activeDot={{ r: 8 }} />
         </LineChart>
         </ResponsiveContainer>
