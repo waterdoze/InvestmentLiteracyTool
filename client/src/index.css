@@ -58,12 +58,33 @@ hr {
   width: 70%;
 }
 
+.stockinfo-component {
+  text-align: center;
+  margin: 2em 0em;
+}
+
+.stock-name {
+  color: white;
+}
+
+.stock-price {
+  color: white;
+  font-weight: 500;
+}
+
 .balance-component {
 }
 
 .balance {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: white;
+}
+
+.owned-stocks {
+  text-align: center;
+  font-size: 1.2rem;
   font-weight: 400;
   color: white;
 }

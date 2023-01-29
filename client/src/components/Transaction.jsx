@@ -1,13 +1,38 @@
 import React from "react";
 
-function Transaction(props) {
-  return (
+function Transaction({setBalance, balance, currPrice, ownedStocks, setOwnedStocks}) {
 
-    
+  const [input, setInput] = React.useState("");
+
+  function buy() {
+    try {
+      let val = parseInt(input);
+      if (val <= 0) {throw Error("Invalid input");}
+      else if (balance < val * currPrice) {throw Error("You don't have enough money to buy");}
+
+      setBalance((balance - val * currPrice).toFixed(2));
+      setOwnedStocks(ownedStocks + val);
+    } 
+    catch (err) {console.log(err);}
+  }
+
+  function sell() {
+    try {
+      let val = parseInt(input);
+      if (val <= 0) {throw Error("Invalid input");}
+      else if (val > ownedStocks) {throw Error("You don't have enough stocks to sell");}
+
+      setBalance((balance + val * currPrice).toFixed(2));
+      setOwnedStocks(ownedStocks - val);
+    } 
+    catch (err) {console.log(err);}
+  }
+
+  return (
     <div className="transaction-component">
-      <input className="input" type="text" placeholder="Enter the amount of shares" />
-        <button className="buy-sell" onClick={props.buy}>Buy</button>
-        <button className="buy-sell" onClick={props.sell}>Sell</button>
+      <input className="input" type="text" placeholder="Enter the amount of shares" value={input} onInput={e => setInput(e.target.value)}/>
+      <button className="buy-sell" onClick={buy}>Buy</button>
+      <button className="buy-sell" onClick={sell} >Sell</button>
     </div>
   );
 }
