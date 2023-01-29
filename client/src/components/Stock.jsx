@@ -74,13 +74,13 @@ function App() {
             newData.push(data[stockIndex]);
 
             // initiates effect of news for the next 4 ticks
-            if (Math.random() < 0.1) {
+            if (Math.random() < 0.2) {
                 const numTicks = 4 + (Math.floor(Math.random() * 4) - 1)
                 setNewsPoints(numTicks);
                 const randomIndex = Math.floor(Math.random() * NewsBank.length)
                 const randomNews = NewsBank[randomIndex];
                 setNewsList([randomNews, ...newsList]);
-                console.log(`New Event Happening. Effect: ${randomNews.effect}, Length: ${numTicks}`)
+                // console.log(`New Event Happening. Effect: ${randomNews.effect}, Length: ${numTicks}`)
             }
         }
         // handles each tick of news effect

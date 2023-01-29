@@ -25,7 +25,7 @@ code {
     height: 100vh;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     color: white;
 }
@@ -169,13 +169,13 @@ hr {
 }
 
 .news-card-headline {
-  font-size: 2rem;
+  font-size: 1.2rem;
   font-weight: 700;
 }
 
 .news-card-summary {
-  font-size: 1rem;
-  font-weight: 300;
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
 #GraphWrapper {
