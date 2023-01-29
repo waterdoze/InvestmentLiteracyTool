@@ -3,9 +3,9 @@ import React from "react";
 function StockInfo({price}) {
     
     return (
-        <div>
-            <h1>Stock</h1>
-            <h2>{price}</h2>
+        <div className="stockinfo-component">
+            <h1 className="stock-name">JPSE</h1>
+            <h2 className="stock-price">{price} USD</h2>
         </div>
     )
 }
