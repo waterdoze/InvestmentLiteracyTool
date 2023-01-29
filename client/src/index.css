@@ -77,22 +77,40 @@ hr {
 }
 
 .news-button {
+  background-color: #000;
+  color: white;
+  border: 1px solid white;
   border-radius: 5px;
   margin: 0px 1em;
-  padding: 1em;
+  padding: 1em 1.1em;
   font-size: 1.1em;
+  font-weight: 700;
+
+  transition: all 0.3s ease;
+}
+
+.news-button:hover {
+  background-color: #fff;
+  color: #000;
 }
 
 .resource-link {
-  margin: 0px 1em;
-  padding: 1em;
+  background-color: #000;
+  color: white;
+  border: 1px solid white;
   border-radius: 5px;
-  border: 1px solid #000;
-  color: #000;
-  display: block;
+  margin: 0em 1em 0em 1em;
+  padding: 1.2em 3em;
   font-size: 1.1rem;
-  font-weight: 400;
+  font-weight: 700;
   text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.resource-link:hover {
+  background-color: #fff;
+  color: #000;
 }
 
 #GraphWrapper {
@@ -102,6 +120,11 @@ hr {
   height: 60vh;
 }
 
+.transaction-component {
+  display: flex;
+  justify-content: center;
+}
+
 .input {
   background-color: #000;
   color: white;
@@ -109,6 +132,8 @@ hr {
   font-size: 1.1rem;
   font-weight: 500;
   padding: 1.2em 2em;
+  border: 1px solid white;
+  border-radius: 5px;
 }
 
 .buy-sell {
@@ -120,4 +145,15 @@ hr {
   padding: 1.2em 3em;
   font-size: 1.1rem;
   font-weight: 700;
+
+  transition: all 0.3s ease;
+}
+
+.buy-sell:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.buy-sell:active {
+  background-color: darkgreen;
 }

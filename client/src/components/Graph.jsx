@@ -11,8 +11,8 @@ import {
 function Graph({ data }) {
     
     return (
-        <ResponsiveContainer width="100%" aspect={3}>
-            <LineChart data={data} >
+        <ResponsiveContainer width="90%" aspect={3} height="100%">
+            <LineChart data={data} height={600} width = {800}>
                 <CartesianGrid />
                 <XAxis dataKey="Date"
                 interval={'preserveStartEnd'} 
