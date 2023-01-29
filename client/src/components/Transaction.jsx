@@ -7,10 +7,11 @@ function Transaction({setBalance, balance, currPrice, ownedStocks, setOwnedStock
   function buy() {
     try {
       let val = parseInt(input);
+      let bal = parseInt(balance);
       if (val <= 0) {throw Error("Invalid input");}
       else if (balance < val * currPrice) {throw Error("You don't have enough money to buy");}
 
-      setBalance((balance - val * currPrice).toFixed(2));
+      setBalance((bal - val * currPrice).toFixed(2));
       setOwnedStocks(ownedStocks + val);
     } 
     catch (err) {console.log(err);}
@@ -19,10 +20,10 @@ function Transaction({setBalance, balance, currPrice, ownedStocks, setOwnedStock
   function sell() {
     try {
       let val = parseInt(input);
+      let bal = parseInt(balance);
       if (val <= 0) {throw Error("Invalid input");}
       else if (val > ownedStocks) {throw Error("You don't have enough stocks to sell");}
-
-      setBalance((balance + val * currPrice).toFixed(2));
+      setBalance((bal + val * currPrice).toFixed(2));
       setOwnedStocks(ownedStocks - val);
     } 
     catch (err) {console.log(err);}

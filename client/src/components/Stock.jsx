@@ -23,7 +23,7 @@ function App() {
     const [newsList, setNewsList] = useState([]);
     const [newsPoints, setNewsPoints] = useState(0);
 
-    // flips opacity for 5 seconds
+    // reveals the NewsPane for 5 seconds
     const revealNews = () => {
         const pane = document.getElementById('NewsPane');
         pane.style.opacity = 1;
@@ -67,22 +67,33 @@ function App() {
       if (time === 0) {
         setTime(10);
         const newData = [...currData];
+
         //news interjection... decide to initiate news + handle news
-        const randomNews = NewsBank[Math.floor(Math.random() * NewsBank.length)];
+        
         if (newsPoints === 0) {
             newData.push(data[stockIndex]);
-            if (Math.random() < 0.2) {
-                setNewsPoints(4);
-                console.log('ADDING NEWS!!!' + randomNews.effect);
+
+            // initiates effect of news for the next 4 ticks
+            if (Math.random() < 0.1) {
+                const numTicks = 4 + (Math.floor(Math.random() * 4) - 1)
+                setNewsPoints(numTicks);
+                const randomIndex = Math.floor(Math.random() * NewsBank.length)
+                const randomNews = NewsBank[randomIndex];
                 setNewsList([randomNews, ...newsList]);
+                console.log(`New Event Happening. Effect: ${randomNews.effect}, Length: ${numTicks}`)
             }
         }
+        // handles each tick of news effect
         else {
             setNewsPoints(newsPoints - 1);
-            let offset = randomNews.effect * Math.random() * 10;
-            console.log('original price: ' + data[stockIndex].Price);
-            console.log('new price: ' + (data[stockIndex].Price + offset));
-            data[stockIndex].Price = Math.max(0, data[stockIndex].Price + offset);
+
+            // interpolate between old and new stock price
+            // offset is based on current value, then interpolation adds randomness
+            const interpolatedValue = (data[stockIndex].Price + currStock.Price) / 2;
+            const newPrice = currStock.Price + newsList[0].effect * Math.random() * 4 + interpolatedValue * 0.05;
+            console.log(data[stockIndex].Price + ' -> ' + newPrice);
+            data[stockIndex].Price = Math.max(0, newPrice);
+
             newData.push(data[stockIndex]);
         }
         
