@@ -5,10 +5,7 @@ function Transaction({setBalance, balance, currPrice}) {
   const [input, setInput] = React.useState("");
 
   function buy() {
-    /*check if less than </= 0*/
-    
     try{
- 
       if (input <= 0) {
         throw "Invalid input";
       }
@@ -19,7 +16,15 @@ function Transaction({setBalance, balance, currPrice}) {
     }
   }
   function sell(){
-    setBalance(balance + (input * currPrice));
+    try{
+      if (input <= 0) {
+        throw "Invalid input";
+      }
+      setBalance(balance + (parseInt(input) * currPrice));
+    }
+    catch(err){
+      console.log(err);
+    }
   }
 
   return (
