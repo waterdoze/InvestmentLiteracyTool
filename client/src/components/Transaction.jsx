@@ -2,7 +2,7 @@ import React from "react";
 
 function Transaction({setBalance, balance, currPrice}) {
 
-  const [input, setInput] = React.useState(0);
+  const [input, setInput] = React.useState("");
 
   function buy() {
     /*check if less than </= 0*/
