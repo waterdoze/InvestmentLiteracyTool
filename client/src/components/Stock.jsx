@@ -5,6 +5,7 @@ import StockInfo from "./StockInfo";
 import Balance from "./Balance";
 import Resources from "./Resources";
 import Transaction from "./Transaction";
+import NewsPane from "./NewsPane";
 
 import {Data} from '../utils/Data';
 import Graph from './Graph';
@@ -16,6 +17,7 @@ function App() {
     const [stockIndex, setStockIndex] = useState(10);
     const [currStock, setCurrStock] = useState({Date: "", Price: 0});
     const [balance, setBalance] = useState(10000);
+    const [ownedStocks, setOwnedStocks] = useState(0);
   
   
     const [time, setTime] = useState(10);
@@ -61,7 +63,7 @@ function App() {
                   <Title />
                   <hr />
                   <StockInfo price = {currStock.Price}/>
-                  <Balance balance={balance}/>
+                  <Balance balance={balance} ownedStocks={ownedStocks}/>
                   <hr />
                   <Resources />
               </div>
@@ -69,7 +71,7 @@ function App() {
                   <div id="GraphWrapper">
                       <Graph data={currData} />
                   </div>
-                  <Transaction setBalance={setBalance} balance={balance} currPrice = {currStock.Price}/>
+                  <Transaction setBalance={setBalance} balance={balance} ownedStocks={ownedStocks} setOwnedStocks={setOwnedStocks} currPrice = {currStock.Price}/>
               </div>
           </div>
       );
