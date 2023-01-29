@@ -8,6 +8,7 @@ import Transaction from "./components/Transaction";
 
 import {Data} from './utils/Data';
 import Graph from './components/Graph';
+
 function App() {
 
   const [data, setData] = useState([]);
@@ -54,12 +55,20 @@ function App() {
   }, [time]);
 
 	return (
-		<div className="App">
+		<div id="App">
 			<div id="SidePane">
 				<Title />
+				<hr />
+				<StockInfo />
+				<Balance />
+				<hr />
+				<Resources />
 			</div>
 			<div id="StockPane">
-        <Graph data={currData} />
+				<div id="GraphWrapper">
+        			<Graph data={currData} />
+				</div>
+				<Transaction />
 			</div>
 		</div>
 	);

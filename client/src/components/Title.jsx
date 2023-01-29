@@ -2,9 +2,8 @@ import React from "react";
 
 function Title() {
   return (
-    <div className="title">
-      <h1>Investment Literacy</h1>
-      <hr />
+    <div className="title-component">
+      <h1>Investment in Chicken</h1>
     </div>
   );
 }
