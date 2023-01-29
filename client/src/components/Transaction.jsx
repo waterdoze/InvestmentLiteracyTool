@@ -10,6 +10,7 @@ function Transaction({setBalance, balance, currPrice}) {
         throw "Invalid input";
       }
       setBalance(balance - (parseInt(input) * currPrice));
+      console.log("Bought " + input + " shares at $" + currPrice + " each.")
     }
     catch(err){
       console.log(err);
@@ -21,6 +22,7 @@ function Transaction({setBalance, balance, currPrice}) {
         throw "Invalid input";
       }
       setBalance(balance + (parseInt(input) * currPrice));
+      console.log("Sold " + input + " shares at $" + currPrice + " each.")
     }
     catch(err){
       console.log(err);
