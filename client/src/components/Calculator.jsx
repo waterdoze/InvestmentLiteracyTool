@@ -3,7 +3,9 @@ import React, { useState } from 'react'
 const Calculator = () => {
     const [inputs, setInputs] = useState([])
     const [isIRA, setIsIRA] = useState(true)
-    const [instructions, setInstructions] = useState(["Please input your current IRA balance", "How much would you like to contribute each year?", "Now your current age?", "And your marginal tax rate is?"]);
+    const [instructions, setInstructions] = useState(["Please input your current IRA balance", "How much would you like to contribute each year?", "Now your current age?", "And your marginal tax rate is?",
+                                                        "This is the amount of money that's already within your IRA account", "Each year, you may put in a set amount out-of-pocket into your IRA account; this amount, as of 2023, may not exceed 6,500$ for individuals under 50 and 7,500$ for those over",
+                                                        "As with anything compounded-interest related, the earlier you start the better", "A Roth IRA pre-taxes your contribution, and so eventual withdrawals will not be taxed"]);
     const [instructionsMorgage, setInstructionsMortgage] = useState(["Please input your starting balance", "Now input your annual contribution", "Now your current age", "And your marginal tax rate is"]);
 
     const doMathIRA = () => {
@@ -37,14 +39,20 @@ const Calculator = () => {
     }
 
     return (
-        <div id="App">
+        <div className="calc" id="App">
+            <div className='top'>
+                <h1>Calculator (Roth)</h1>
+
+            </div>
             <div className='calc-input'>
                 <h2>{instructions[0]}</h2>
                 <input className="buy-sell" type="text" onKeyPress={handleKeyPress} />
             </div>
 
             <br />
-            <div>{inputs.length}</div>
+            <div className='calc-text'>
+                <p>Your Individual Retirement Account (IRA) gives you favorable tax treatment so that you may invest money in expectance of retirement.</p>
+            </div>
 
         </div>
     );

@@ -6,188 +6,205 @@
 */
 
 body {
-  margin: 0px;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(26, 26, 26);
-  font-family: 'IBM Plex Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow: auto;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(26, 26, 26);
+    font-family: 'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: auto;
 }
 
 code {
-  font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
 }
 
 #App {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
 }
 
 #SidePane {
-  width: calc(35% - 2em);
-  height: calc(100vh - 4em);
-  margin: 2em;
-  
-  background-color: rgb(63, 63, 63);
-  border-radius: 5px;
+    width: calc(35% - 2em);
+    height: calc(100vh - 4em);
+    margin: 2em;
+
+    background-color: rgb(63, 63, 63);
+    border-radius: 5px;
 }
 
 #StockPane {
-  width: 65%;
-  height: 100vh;
-  margin: 0px;
+    width: 65%;
+    height: 100vh;
+    margin: 0px;
 }
 
 .title-component {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: white;
-  text-align: center;
-  overflow:hidden;
-  margin-top: 3em;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    margin-top: 3em;
 }
 
 hr {
-  width: 70%;
+    width: 70%;
 }
 
 .stockinfo-component {
-  text-align: center;
-  margin: 2em 0em;
+    text-align: center;
+    margin: 2em 0em;
 }
 
 .stock-name {
-  color: white;
+    color: white;
 }
 
 .stock-price {
-  color: white;
-  font-weight: 500;
+    color: white;
+    font-weight: 500;
 }
 
 .green {
-  color: lightgreen;
+    color: lightgreen;
 }
 
 .red {
-  color: red;
+    color: red;
 }
 
-.balance-component {
-}
+.balance-component {}
 
 .balance {
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: white;
 }
 
 .owned-stocks {
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: white;
 }
 
 .resources-component {
-  margin: 2em 0em;
-  padding: 0em 2em;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  height: 4em;
+    margin: 2em 0em;
+    padding: 0em 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 4em;
 }
 
 .news-button {
-  background-color: #000;
-  color: white;
-  border: 1px solid white;
-  border-radius: 5px;
-  margin: 0px 1em;
-  padding: 1em 1.1em;
-  font-size: 1.1em;
-  font-weight: 700;
+    background-color: #000;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 0px 1em;
+    padding: 1em 1.1em;
+    font-size: 1.1em;
+    font-weight: 700;
 
-  transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .news-button:hover {
-  background-color: #fff;
-  color: #000;
+    background-color: #fff;
+    color: #000;
 }
 
 .resource-link {
-  background-color: #000;
-  color: white;
-  border: 1px solid white;
-  border-radius: 5px;
-  margin: 0em 1em 0em 1em;
-  padding: 1.2em 3em;
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-decoration: none;
+    background-color: #000;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 0em 1em 0em 1em;
+    padding: 1.2em 3em;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
 
-  transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .resource-link:hover {
-  background-color: #fff;
-  color: #000;
+    background-color: #fff;
+    color: #000;
 }
 
 #GraphWrapper {
-  overflow-x: hidden;
-  margin: 7em 0em 2em 0em;
-  width: 100%;
-  height: 60vh;
+    overflow-x: hidden;
+    margin: 7em 0em 2em 0em;
+    width: 100%;
+    height: 60vh;
 }
 
 .transaction-component {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .input {
-  background-color: #000;
-  color: white;
-  margin: 0em 1em 0em 1em;
-  font-size: 1.1rem;
-  font-weight: 500;
-  padding: 1em 1em;
-  border: 1px solid white;
-  border-radius: 5px;
+    background-color: #000;
+    color: white;
+    margin: 0em 1em 0em 1em;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 1em 1em;
+    border: 1px solid white;
+    border-radius: 5px;
 }
 
 .buy-sell {
-  background-color: #000;
-  color: white;
-  border: 1px solid white;
-  border-radius: 5px;
-  margin: 0em 1em 0em 1em;
-  padding: 1.2em 3em;
-  font-size: 1.1rem;
-  font-weight: 700;
+    background-color: #000;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 0em 1em 0em 1em;
+    padding: 1.2em 3em;
+    font-size: 1.1rem;
+    font-weight: 700;
 
-  transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .buy-sell:hover {
-  background-color: #fff;
-  color: #000;
+    background-color: #fff;
+    color: #000;
 }
 
 .buy-sell:active {
-  background-color: lightgreen;
+    background-color: lightgreen;
 }
 
-.calc-input {
+.calc>div {
+    margin: auto;
+}
+
+.calc-input,
+.calc-text {
     margin: 0 4em;
 }
+
+.calc-text {
+    max-width: 300px;
+    text-align: center;
+    letter-spacing: .05em;
+}
+
+.calc>.top {
+    position: absolute;
+    top: 10px;
+    left: 45%;
+}
+
