@@ -1,63 +1,51 @@
 import React, { useState } from 'react'
 
 const Calculator = () => {
-    const [displayValue, setDisplayValue] = useState("0");
-    const [operator, setOperator] = useState(null);
-    const [operand, setOperand] = useState(null);
+    const [inputs, setInputs] = useState([])
+    const [isIRA, setIsIRA] = useState(true)
+    const [instructions, setInstructions] = useState(["Please input your current IRA balance", "How much would you like to contribute each year?", "Now your current age?", "And your marginal tax rate is?"]);
+    const [instructionsMorgage, setInstructionsMortgage] = useState(["Please input your starting balance", "Now input your annual contribution", "Now your current age", "And your marginal tax rate is"]);
 
-    function handleClick(e) {
-        const value = e.target.value;
+    const doMathIRA = () => {
+        let result = parseFloat(inputs[0])
+        let perYear = parseFloat(inputs[1])
+        let age = parseInt(inputs[2])
+        let tax = parseFloat(inputs[3])
 
-        if (value === "C") {
-            setDisplayValue("0");
-            setOperator(null);
-            setOperand(null);
-        } else if (value === "+" || value === "-" || value === "*" || value === "/") {
-            setOperator(value);
-            setOperand(displayValue);
-            setDisplayValue("0");
-        } else if (value === "=") {
-            if (operator === "+") {
-                setDisplayValue(parseFloat(operand) + parseFloat(displayValue));
-            } else if (operator === "-") {
-                setDisplayValue(parseFloat(operand) - parseFloat(displayValue));
-            } else if (operator === "*") {
-                setDisplayValue(parseFloat(operand) * parseFloat(displayValue));
-            } else if (operator === "/") {
-                setDisplayValue(parseFloat(operand) / parseFloat(displayValue));
+        for (let i = 0; i < 65 - age; i++) {
+            result += perYear
+            result *= 1.07
+        }
+
+        let resultFormatted = (Math.round(result * 100) / 100).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+        setInstructions([`If you were to retire at the age of 65, your Roth IRA balance could potentially be ${resultFormatted}$`])
+        console.log(result)
+    }
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter" && inputs.length <= 3) {
+            setInputs([...inputs, e.target.value]);
+            e.target.value = "";
+            if (inputs.length < 3) {
+                setInstructions((instructions) => instructions.filter((_, index) => index !== 0));
             }
-        } else {
-            if (displayValue === "0") {
-                setDisplayValue(value);
-            } else {
-                setDisplayValue(displayValue + value);
+
+            else {
+                doMathIRA()
             }
         }
     }
 
     return (
-        <div>
-            <input type="text" value={displayValue} readOnly />
+        <div id="App">
+            <div>
+                <h2>{instructions[0]}</h2>
+                <input className="buy-sell" type="text" onKeyPress={handleKeyPress} />
+            </div>
+
             <br />
-            <button value="1" onClick={handleClick}>1</button>
-            <button value="2" onClick={handleClick}>2</button>
-            <button value="3" onClick={handleClick}>3</button>
-            <button value="+" onClick={handleClick}>+</button>
-            <br />
-            <button value="4" onClick={handleClick}>4</button>
-            <button value="5" onClick={handleClick}>5</button>
-            <button value="6" onClick={handleClick}>6</button>
-            <button value="-" onClick={handleClick}>-</button>
-            <br />
-            <button value="7" onClick={handleClick}>7</button>
-            <button value="8" onClick={handleClick}>8</button>
-            <button value="9" onClick={handleClick}>9</button>
-            <button value="*" onClick={handleClick}>*</button>
-            <br />
-            <button value="C" onClick={handleClick}>C</button>
-            <button value="0" onClick={handleClick}>0</button>
-            <button value="=" onClick={handleClick}>=</button>
-            <button value="/" onClick={handleClick}>/</button>
+            <div>{inputs.length}</div>
+
         </div>
     );
 }
