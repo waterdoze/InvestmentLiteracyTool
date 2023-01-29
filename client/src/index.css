@@ -71,6 +71,14 @@ hr {
   font-weight: 500;
 }
 
+.green {
+  color: lightgreen;
+}
+
+.red {
+  color: red;
+}
+
 .balance-component {
 }
 
@@ -176,5 +184,5 @@ hr {
 }
 
 .buy-sell:active {
-  background-color: darkgreen;
+  background-color: lightgreen;
 }
