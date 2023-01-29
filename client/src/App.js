@@ -14,11 +14,13 @@ function App() {
   const [data, setData] = useState([]);
   const [currData, setCurrData] = useState([]);
   const [stockIndex, setStockIndex] = useState(10);
-  const [currStock, setCurrStock] = useState();
+  const [currStock, setCurrStock] = useState({Date: '2019-01-01', Price: 0});
+  const [balance, setBalance] = useState(1000);
 
 
   const [time, setTime] = useState(10);
   useEffect(()  => {
+    console.log(currStock)
     const fetchData = async () => {
       const response = await fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=META&apikey=TX6O5JWMEMBV5M0M%27');
       const json = await response.json();
@@ -26,9 +28,13 @@ function App() {
       const pd = Object.keys(json["Time Series (Daily)"]).map((key) => (
         {Date: key, Price: parseFloat(json["Time Series (Daily)"][key]["1. open"])}
       )).reverse();
-      setData(pd);
-      setCurrData(pd.slice(0,10));
-      setCurrStock(pd[currData.length - 1]);
+      if (pd.length === 0) {
+        console.log("Error: No data found");
+        return;
+      }
+      await setData(pd);
+      await setCurrData(pd.slice(0,10));
+      //await setCurrStock(pd[currData.length - 1]);
       console.log(currData)
       }
     fetchData();
@@ -50,7 +56,6 @@ function App() {
       setStockIndex(stockIndex + 1);
       setCurrData(newData);
       setCurrStock(newData[newData.length - 1]);
-      
     }
   }, [time]);
 
@@ -59,16 +64,16 @@ function App() {
 			<div id="SidePane">
 				<Title />
 				<hr />
-				<StockInfo />
-				<Balance />
+				<StockInfo price = {currStock.Price}/>
+				<Balance balance={balance} />
 				<hr />
 				<Resources />
 			</div>
 			<div id="StockPane">
 				<div id="GraphWrapper">
-        			<Graph data={currData} />
+            <Graph data={currData} />
 				</div>
-				<Transaction />
+				<Transaction setBalance={setBalance} balance = {balance} currPrice = {currStock.Price}/>
 			</div>
 		</div>
 	);

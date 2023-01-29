@@ -1,8 +1,12 @@
 import React from "react";
 
-function StockInfo(props) {
+function StockInfo({price}) {
+    
     return (
-        <div/>
+        <div>
+            <h1>Stock</h1>
+            <h2>{price}</h2>
+        </div>
     )
 }
 
