@@ -2,7 +2,7 @@ import React from "react";
 
 function Transaction({setBalance, balance, currPrice, ownedStocks, setOwnedStocks}) {
 
-  const [input, setInput] = React.useState(0);
+  const [input, setInput] = React.useState("");
 
   function buy() {
     try {

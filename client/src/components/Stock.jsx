@@ -15,7 +15,7 @@ function App() {
     const [data, setData] = useState([]);
     const [currData, setCurrData] = useState([]);
     const [stockIndex, setStockIndex] = useState(10);
-    const [currStock, setCurrStock] = useState({Date: "", Price: 0});
+    const [currStock, setCurrStock] = useState({Date: "", Price: 148.05});
     const [balance, setBalance] = useState(10000);
     const [ownedStocks, setOwnedStocks] = useState(0);
   
@@ -25,17 +25,25 @@ function App() {
       const fetchData = async () => {
         const response = await fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=META&apikey=TX6O5JWMEMBV5M0M%27');
         const json = await response.json();
-  
-        const pd = Object.keys(json["Time Series (Daily)"]).map((key) => (
-          {Date: key, Price: parseFloat(json["Time Series (Daily)"][key]["1. open"])}
-        )).reverse();
-        setData(pd);
-        setCurrData(pd.slice(0,10));
-        //setCurrStock(pd[currData.length - 1]);
-        console.log(currData)
+        return json;
         }
-      fetchData();
+
+        fetchData().then((json) => {
+            const pd = Object.keys(json["Time Series (Daily)"]).map((key) => (
+                {Date: key, Price: parseFloat(json["Time Series (Daily)"][key]["1. open"])}
+            )).reverse();
+            setData(pd);
+            setCurrData(pd.slice(0,10));
+            
+            console.log(currData)
+        });
+
       }, []);
+    useEffect(() => {
+        //setCurrStock(currData[currData.length - 1]);
+    }, [currData]);
+
+
     /*add new stock to graph*/
     useEffect(() => {
       let interval = setInterval(() => {
