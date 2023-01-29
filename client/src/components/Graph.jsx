@@ -11,9 +11,9 @@ import {
 function Graph({ data }) {
     
     return (
-        <ResponsiveContainer width="90%" aspect={3} height="100%">
-            <LineChart data={data} height={600} width = {800}>
-                <CartesianGrid />
+        <ResponsiveContainer width="90%" height="95%">
+            <LineChart data={data} height={500} width = {800}>
+                <CartesianGrid/>
                 <XAxis dataKey="Date"
                 interval={'preserveStartEnd'} 
                 label = {<AxisLabel axisType='yAxis' x={0} y={0} width={0} height={0}> Price</AxisLabel>}/> {/* change x and y*/}
@@ -21,7 +21,7 @@ function Graph({ data }) {
                 <Legend />
                 <Tooltip />
                 <Line dataKey="Price"
-                stroke="black" activeDot={{ r: 8 }} />
+                stroke="lightgreen" activeDot={{ r: 8 }} />
             </LineChart>
         </ResponsiveContainer>
     );
