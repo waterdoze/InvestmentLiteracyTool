@@ -15,14 +15,12 @@ const Home = () => {
 
     return (
         <div id='App'>
-            <div className="wrapper">
-                <button className="btn" onClick={stock}>
-                    Stock Chart
-                </button>
-                <button className="btn2" onClick={calc}>
-                    Calculator
-                </button>
-            </div>
+            <button className="buy-sell" onClick={stock}>
+                Stock Chart
+            </button>
+            <button className="buy-sell" onClick={calc}>
+                Calculator
+            </button>
         </div>
     )
 }

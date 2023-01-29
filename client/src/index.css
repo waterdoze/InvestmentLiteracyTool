@@ -179,3 +179,7 @@ hr {
 .buy-sell:active {
   background-color: darkgreen;
 }
+
+.calc-input {
+    margin: 0 4em;
+}

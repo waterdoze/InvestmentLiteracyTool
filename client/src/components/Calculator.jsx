@@ -38,7 +38,7 @@ const Calculator = () => {
 
     return (
         <div id="App">
-            <div>
+            <div className='calc-input'>
                 <h2>{instructions[0]}</h2>
                 <input className="buy-sell" type="text" onKeyPress={handleKeyPress} />
             </div>
