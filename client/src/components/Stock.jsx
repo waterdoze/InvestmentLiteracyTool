@@ -18,6 +18,7 @@ function App() {
     const [currStock, setCurrStock] = useState({Date: "", Price: 148.05});
     const [balance, setBalance] = useState(10000);
     const [ownedStocks, setOwnedStocks] = useState(0);
+    const [oldStock, setOldStock] = useState(148.05);
   
   
     const [time, setTime] = useState(10);
@@ -59,6 +60,7 @@ function App() {
         const newData = [...currData];
         newData.push(data[stockIndex]);
         setStockIndex(stockIndex + 1);
+        setOldStock(currStock.Price);
         setCurrData(newData);
         setCurrStock(newData[newData.length - 1]);
         
@@ -70,7 +72,7 @@ function App() {
               <div id="SidePane">
                   <Title />
                   <hr />
-                  <StockInfo price = {currStock.Price}/>
+                  <StockInfo price = {currStock.Price} oldStock={oldStock}/>
                   <Balance balance={balance} ownedStocks={ownedStocks}/>
                   <hr />
                   <Resources />
