@@ -8,14 +8,10 @@ function Transaction({setBalance, balance, currPrice}) {
     /*check if less than </= 0*/
     
     try{
-      console.log(typeof(input),"Test1")
-      console.log(currPrice,"Test3")
-      setInput(parseInt(input))
+ 
       if (input <= 0) {
         throw "Invalid input";
       }
-      console.log(typeof(input),"Test2")
-      console.log(balance - (parseInt(input) * currPrice));
       setBalance(balance - (parseInt(input) * currPrice));
     }
     catch(err){

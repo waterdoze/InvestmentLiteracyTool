@@ -14,7 +14,8 @@ function App() {
     const [data, setData] = useState([]);
     const [currData, setCurrData] = useState([]);
     const [stockIndex, setStockIndex] = useState(10);
-    const [currStock, setCurrStock] = useState();
+    const [currStock, setCurrStock] = useState({Date: "", Price: 0});
+    const [balance, setBalance] = useState(10000);
   
   
     const [time, setTime] = useState(10);
@@ -28,7 +29,7 @@ function App() {
         )).reverse();
         setData(pd);
         setCurrData(pd.slice(0,10));
-        setCurrStock(pd[currData.length - 1]);
+        //setCurrStock(pd[currData.length - 1]);
         console.log(currData)
         }
       fetchData();
@@ -59,8 +60,8 @@ function App() {
               <div id="SidePane">
                   <Title />
                   <hr />
-                  <StockInfo />
-                  <Balance />
+                  <StockInfo price = {currStock.Price}/>
+                  <Balance balance={balance}/>
                   <hr />
                   <Resources />
               </div>
@@ -68,7 +69,7 @@ function App() {
                   <div id="GraphWrapper">
                       <Graph data={currData} />
                   </div>
-                  <Transaction />
+                  <Transaction setBalance={setBalance} balance={balance} currPrice = {currStock.Price}/>
               </div>
           </div>
       );
