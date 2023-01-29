@@ -8,6 +8,7 @@ import Transaction from "./Transaction";
 import NewsPane from "./NewsPane";
 
 import {Data} from '../utils/Data';
+import NewsBank from '../utils/NewsBank';
 import Graph from './Graph';
 
 function App() {
@@ -19,6 +20,15 @@ function App() {
     const [balance, setBalance] = useState(10000);
     const [ownedStocks, setOwnedStocks] = useState(0);
     const [oldStock, setOldStock] = useState(148.05);
+    const [newsList, setNewsList] = useState([]);
+    const [newsPoints, setNewsPoints] = useState(0);
+
+    // flips opacity for 5 seconds
+    const revealNews = () => {
+        const pane = document.getElementById('NewsPane');
+        pane.style.opacity = 1;
+        setTimeout(() => {pane.style.opacity = 0;}, 5000);
+    }
   
   
     const [time, setTime] = useState(10);
@@ -53,12 +63,29 @@ function App() {
       return () => clearInterval(interval);
     }, []);
   
-    
     useEffect(() => {
       if (time === 0) {
         setTime(10);
         const newData = [...currData];
-        newData.push(data[stockIndex]);
+        //news interjection... decide to initiate news + handle news
+        const randomNews = NewsBank[Math.floor(Math.random() * NewsBank.length)];
+        if (newsPoints === 0) {
+            newData.push(data[stockIndex]);
+            if (Math.random() < 0.2) {
+                setNewsPoints(4);
+                console.log('ADDING NEWS!!!' + randomNews.effect);
+                setNewsList([randomNews, ...newsList]);
+            }
+        }
+        else {
+            setNewsPoints(newsPoints - 1);
+            let offset = randomNews.effect * Math.random() * 10;
+            console.log('original price: ' + data[stockIndex].Price);
+            console.log('new price: ' + (data[stockIndex].Price + offset));
+            data[stockIndex].Price = Math.max(0, data[stockIndex].Price + offset);
+            newData.push(data[stockIndex]);
+        }
+        
         setStockIndex(stockIndex + 1);
         setOldStock(currStock.Price);
         setCurrData(newData);
@@ -75,7 +102,8 @@ function App() {
                   <StockInfo price = {currStock.Price} oldStock={oldStock}/>
                   <Balance balance={balance} ownedStocks={ownedStocks}/>
                   <hr />
-                  <Resources />
+                  <Resources revealNews={revealNews}/>
+                  <NewsPane newsList={newsList}/>
               </div>
               <div id="StockPane">
                   <div id="GraphWrapper">

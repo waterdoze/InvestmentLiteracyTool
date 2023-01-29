@@ -142,6 +142,42 @@ hr {
     color: #000;
 }
 
+#NewsPane {
+  transition: all 0.7s ease;
+  background-color: rgb(26, 26, 26);
+  opacity: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 30vh;
+  margin: 0em 3em;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar {width: 10px;}
+::-webkit-scrollbar-track {background: rgb(26, 26, 26);}
+::-webkit-scrollbar-thumb {background: #888; border-radius: 5px;}
+
+.news-card {
+    background-color: rgb(63, 63, 63);
+    border-radius: 5px;
+    margin: 1em 2em;
+    padding: 1em 1em;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: white;
+    transition: all 0.9s ease;
+}
+
+.news-card-headline {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.news-card-summary {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
 #GraphWrapper {
     overflow-x: hidden;
     margin: 7em 0em 2em 0em;
